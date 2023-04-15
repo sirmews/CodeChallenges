@@ -21,7 +21,7 @@ export const ItemList = ({ data }) => {
   return (
     <div className="container mt-5">
       {items.map((item, index) => (
-        <p>Item goes here</p>
+        <p key={index}>{item}</p>
       ))}
       <hr/>
       <form onSubmit={handleNewItemSubmit}>
