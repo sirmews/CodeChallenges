@@ -4,7 +4,15 @@ export const PreviewPanel = ({ data }) => {
     <div className="panel">
       <div className="panel-heading">Content</div>
       <div className="panel-block">
-        {content.length > 0 ? <p>{content.join('\n')}</p> : <p>Please select a title</p>}
+        <div className="content">
+          {content.length > 0 ? (
+              content.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))
+            ) : (
+              <p>Please select a title</p>
+            )}
+        </div>
       </div>
     </div>
   );
