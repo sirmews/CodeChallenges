@@ -5,7 +5,10 @@ export const Item = ({ index, text, onDelete, onEdit }) => {
   const [newItemText, setNewItemText] = useState(text);
 
   const handleDelete = () => {
-    onDelete();
+    const confirmed = window.confirm('Are you sure you want to delete this?')
+    if(confirmed) {
+      onDelete();
+    }
   };
 
   /**
