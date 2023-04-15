@@ -27,12 +27,31 @@ export const ItemList = ({ data }) => {
     setItems(newItems);
   };
 
+  /**
+   * Handle editing an item
+   * @param {number} index
+   * @param {string} text
+   */
+  const handleItemEdit = (index, text) => {
+    console.log(index);
+    console.log(text);
+    const newItems = [...items];
+    newItems[index] = text;
+    setItems(newItems);
+  };
 
+  /**
+   * Handle text change
+   * @param {React.ChangeEvent<HTMLInputElement>} e 
+   */
+  const handleTextChange = (e) => {
+    setNewItemText(e.target.value)
+  }
 
   return (
     <div className="container mt-5">
       {items.length > 0 && items.map((item, index) => (
-        <Item text={item} onDelete={handleItemDelete} />
+        <Item key={index} index={index} text={item} onDelete={handleItemDelete} onEdit={handleItemEdit} />
       ))}
       <hr/>
       <form onSubmit={handleNewItemSubmit}>
@@ -44,7 +63,7 @@ export const ItemList = ({ data }) => {
               placeholder="Enter new item"
               value={newItemText}
               required={true}
-              onChange={(e) => setNewItemText(e.target.value)}
+              onChange={handleTextChange}
             />
           </div>
           <div className="control">
