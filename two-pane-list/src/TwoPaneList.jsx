@@ -1,15 +1,16 @@
+import {useState} from "react"
 import { ListPanel } from "./ListPanel";
 import { PreviewPanel } from "./PreviewPanel";
 
 export const TwoPaneList = ({ data }) => {
+  const [selectedItem, setSelectedItem] = useState(0);
   /**
    * A function to handle the click event on a title
    * @param {number} index
    * @returns {void}
    */
   const handleTitleClick = (index) => {
-    console.log("Title clicked:", data[index].title);
-    // update state or perform other actions as needed
+    setSelectedItem(index);
   };
   return (
     <div className="columns">
@@ -17,7 +18,7 @@ export const TwoPaneList = ({ data }) => {
         <ListPanel data={data} onClickHandler={handleTitleClick} />
       </div>
       <div className="column">
-        <PreviewPanel content={data[0]?.content} />
+        <PreviewPanel data={data[selectedItem]} />
       </div>
     </div>
   );
