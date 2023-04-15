@@ -33,8 +33,6 @@ export const ItemList = ({ data }) => {
    * @param {string} text
    */
   const handleItemEdit = (index, text) => {
-    console.log(index);
-    console.log(text);
     const newItems = [...items];
     newItems[index] = text;
     setItems(newItems);
