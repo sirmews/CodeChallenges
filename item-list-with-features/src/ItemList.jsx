@@ -20,8 +20,8 @@ export const ItemList = ({ data }) => {
 
   return (
     <div className="container mt-5">
-      {items.map((item, index) => (
-        <p key={index}>{item}</p>
+      {items.length > 0 && items.map((item, index) => (
+        <Item text={item} />
       ))}
       <hr/>
       <form onSubmit={handleNewItemSubmit}>
