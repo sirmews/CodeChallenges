@@ -6,7 +6,7 @@ export const ItemList = ({ data }) => {
   const [newItemText, setNewItemText] = useState("");
 
   /**
-   * 
+   * Handle new item being added
    * @param {React.FormEvent} e 
    */
   const handleNewItemSubmit = (e) => {
@@ -17,11 +17,22 @@ export const ItemList = ({ data }) => {
     setNewItemText("");
   };
 
+  /**
+   * Handle deleting an item
+   * @param {*} index 
+   */
+  const handleItemDelete = (index) => {
+    const newItems = [...items];
+    newItems.splice(index, 1);
+    setItems(newItems);
+  };
+
+
 
   return (
     <div className="container mt-5">
       {items.length > 0 && items.map((item, index) => (
-        <Item text={item} />
+        <Item text={item} onDelete={handleItemDelete} />
       ))}
       <hr/>
       <form onSubmit={handleNewItemSubmit}>
