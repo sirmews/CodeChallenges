@@ -3,14 +3,14 @@ export const ListPanel = ({ data, onClickHandler }) => {
     <div className="panel is-primary">
       <p className="panel-heading">Titles</p>
       <div className="panel-block">
-        <ul className="menu-list">
+        <ul className="menu-list" style={{ width: "100%" }}>
           {data.map((item, index) => (
             <li key={index}>
               <button
-                className="button is-text"
+                className="button is-text is-fullwidth is-justify-content-flex-start"
                 onClick={() => onClickHandler(index)}
               >
-                {item.title}
+                <span className='is-clipped' style={{textOverflow: "ellipsis"}}>{item.title}</span>
               </button>
             </li>
           ))}
