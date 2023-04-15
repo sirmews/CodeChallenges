@@ -121,24 +121,32 @@ The Maze</code>
     </section>
 
     <script>
-      Array.prototype.forEach.call(document.getElementsByClassName("test-row"), row => {
-        const year = parseInt(row.children[0].innerText)
-        const expectedOutput = row.children[1].innerText
+      // Remove whitespaces from string
+      const removeWhitespaces = (str) => str.replace(/\s/g, "");
+      Array.prototype.forEach.call(
+        document.getElementsByClassName("test-row"),
+        (row) => {
+          const year = parseInt(row.children[0].innerText);
+          const expectedOutput = row.children[1].innerText;
 
-        getMovieList(year).then(actualOutput => {
-          const actualOutputString = actualOutput.join("\n")
-          row.children[2].children[0].innerText = actualOutputString
+          getMovieList(year).then((actualOutput) => {
+            const actualOutputString = actualOutput.join("\n");
+            row.children[2].children[0].innerText = actualOutputString;
 
-          if (expectedOutput === actualOutputString) {
-            row.children[3].innerText = "RIGHT"
-            row.children[3].style.color = "green"
-            row.children[3].style.fontWeight = "600"
-          } else {
-            row.children[3].innerText = "WRONG"
-            row.children[3].style.backgroundColor = "red"
-          }
-        })
-      })
+            if (
+              removeWhitespaces(expectedOutput) ===
+              removeWhitespaces(actualOutputString)
+            ) {
+              row.children[3].innerText = "RIGHT";
+              row.children[3].style.color = "green";
+              row.children[3].style.fontWeight = "600";
+            } else {
+              row.children[3].innerText = "WRONG";
+              row.children[3].style.backgroundColor = "red";
+            }
+          });
+        }
+      );
     </script>
   </body>
 </html>
