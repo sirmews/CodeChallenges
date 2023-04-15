@@ -4,10 +4,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <script>
-      //
-      // TODO: Implement this function.
-      //
-      const getMovieList = () => {}
+      /**
+       * @param {int} year
+       * @returns {Promise<string[]>}
+       */
+      const getMovieList = (year) => {
+        const url = `https://jsonmock.hackerrank.com/api/movies?Year=${year}`;
+        return fetch(url)
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.total === 0) {
+              return [];
+            } else {
+              const titles = data.data.map((movie) => movie.Title);
+              return titles.sort();
+            }
+          })
+          .catch((error) => {
+            console.error("Error retrieving movie list:", error);
+            return [];
+          });
+      };
     </script>
   </head>
 
