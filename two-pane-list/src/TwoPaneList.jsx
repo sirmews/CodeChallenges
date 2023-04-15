@@ -3,7 +3,8 @@ import { ListPanel } from "./ListPanel";
 import { PreviewPanel } from "./PreviewPanel";
 
 export const TwoPaneList = ({ data }) => {
-  const [selectedItem, setSelectedItem] = useState(0);
+  const [selectedItem, setSelectedItem] = useState(null);
+
   /**
    * A function to handle the click event on a title
    * @param {number} index
@@ -12,6 +13,7 @@ export const TwoPaneList = ({ data }) => {
   const handleTitleClick = (index) => {
     setSelectedItem(index);
   };
+  
   return (
     <div className="columns">
       <div className="column is-one-third">

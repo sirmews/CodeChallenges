@@ -1,5 +1,6 @@
 export const PreviewPanel = ({ data }) => {
-  const {content} = data
+  const { content } = data || { content: [] };
+
   return (
     <div className="panel">
       <div className="panel-heading">Content</div>
