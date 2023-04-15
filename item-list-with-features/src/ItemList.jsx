@@ -43,6 +43,7 @@ export const ItemList = ({ data }) => {
               type="text"
               placeholder="Enter new item"
               value={newItemText}
+              required={true}
               onChange={(e) => setNewItemText(e.target.value)}
             />
           </div>
